@@ -33,7 +33,9 @@ function file_browser_show() {
   // app.css
   drupal_add_css($module_path . '/file-browser-app/app/styles/app.css', 'file');
 
-  // filesaver.js
+  // underscore.js, promise.js and filesaver.js
+  drupal_add_js($module_path . '/file-browser-app/bower_components/underscore/underscore.js', array('type' => 'file', 'preprocess' => FALSE));
+  drupal_add_js($module_path . '/file-browser-app/bower_components/es6-promise/promise.js', array('type' => 'file', 'preprocess' => FALSE));
   drupal_add_js($module_path . '/file-browser-app/bower_components/FileSaver.js/FileSaver.min.js', array('type' => 'file', 'preprocess' => FALSE));
 
   // app.js
