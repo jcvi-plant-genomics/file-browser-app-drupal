@@ -1,0 +1,3 @@
+[submodule "file-browser-app"]
+	path = file-browser-app
+	url = https://github.com/vivekkrish/file-browser-app.git

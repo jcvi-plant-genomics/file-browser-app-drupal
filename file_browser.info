@@ -1,0 +1,10 @@
+name = file_browser
+description = Legume Federation File Browser
+package = LegFed
+version = VERSION
+core = 7.x
+dependencies[] = agave
+
+
+
+

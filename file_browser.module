@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function file_browser_menu(){
+  $items = array();
+
+  $items['apps/file_browser'] = array(
+    'title' => 'Legume Federation File Browser',
+    'description' => 'Browse files from Cyverse Data Store',
+    'type' => MENU_CALLBACK,
+    'page callback' => 'file_browser_show',
+    'access callback' => TRUE
+  );
+
+  return $items;
+}
+
+function file_browser_show() {
+  global $user;
+
+  if ($user-> uid == 0) {
+    $output = '<div class="jumbotron"><p>You need to be logged in to view the file browser!</p><p>!login</p></div>';
+
+    return t($output, array(
+      '!login' => l(t('Login'), 'user/login', array('query' => drupal_get_destination(), 'attributes' => array('class' => 'btn btn-primary')))
+    ));
+  }
+
+  $module_path = drupal_get_path('module', 'file_browser');
+
+  // app.css
+  drupal_add_css($module_path . '/file-browser-app/app/styles/app.css', 'file');
+
+  // filesaver.js
+  drupal_add_js($module_path . '/file-browser-app/bower_components/FileSaver.js/FileSaver.min.js', array('type' => 'file', 'preprocess' => FALSE));
+
+  // app.js
+  drupal_add_js($module_path . '/file-browser-app/app/scripts/app.js', array('type' => 'file', 'scope' => 'footer', 'preprocess' => FALSE));
+
+  return file_get_contents($module_path . '/file-browser-app/app/app.html');
+}
