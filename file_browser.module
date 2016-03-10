@@ -30,6 +30,9 @@ function file_browser_show() {
 
   $module_path = drupal_get_path('module', 'file_browser');
 
+  // fontawesome.css
+  drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', 'external');
+
   // app.css
   drupal_add_css($module_path . '/file-browser-app/app/styles/app.css', 'file');
 
