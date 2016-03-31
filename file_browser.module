@@ -30,16 +30,19 @@ function file_browser_show() {
 
   $module_path = drupal_get_path('module', 'file_browser');
 
-  // fontawesome.css
-  drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', 'external');
+  // fontawesome.css and bootstrap.css
+  drupal_add_css($module_path . '/file-browser-app/bower_components/components-font-awesome/css/font-awesome.css', 'file');
+  drupal_add_css($module_path . '/file-browser-app/bower_components/components-bootstrap-default/css/bootstrap.css', 'file');
+  drupal_add_css($module_path . '/file-browser-app/bower_components/components-bootstrap-default/css/bootstrap-theme.css', 'file');
 
   // app.css
   drupal_add_css($module_path . '/file-browser-app/app/styles/app.css', 'file');
 
-  // underscore.js, promise.js and filesaver.js
+  // underscore.js, promise.js, filesaver.js and bootstrap.js
   drupal_add_js($module_path . '/file-browser-app/bower_components/underscore/underscore.js', array('type' => 'file', 'preprocess' => FALSE));
   drupal_add_js($module_path . '/file-browser-app/bower_components/es6-promise/promise.js', array('type' => 'file', 'preprocess' => FALSE));
   drupal_add_js($module_path . '/file-browser-app/bower_components/FileSaver.js/FileSaver.min.js', array('type' => 'file', 'preprocess' => FALSE));
+  drupal_add_js($module_path . '/file-browser-app/bower_components/components-bootstrap/js/bootstrap.js', array('type' => 'file', 'preprocess' => FALSE));
 
   // app.js
   drupal_add_js($module_path . '/file-browser-app/app/scripts/app.js', array('type' => 'file', 'scope' => 'footer', 'preprocess' => FALSE));
